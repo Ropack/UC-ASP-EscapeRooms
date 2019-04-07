@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using US.ASP.EscapeRooms.Models;
+using US.ASP.EscapeRooms.ViewModels;
 
 namespace US.ASP.EscapeRooms.Controllers
 {

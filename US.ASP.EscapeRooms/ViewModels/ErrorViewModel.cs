@@ -1,6 +1,6 @@
 using System;
 
-namespace US.ASP.EscapeRooms.Models
+namespace US.ASP.EscapeRooms.ViewModels
 {
     public class ErrorViewModel
     {

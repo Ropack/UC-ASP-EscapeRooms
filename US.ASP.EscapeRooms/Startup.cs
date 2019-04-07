@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Castle.Facilities.AspNetCore;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -41,6 +45,9 @@ namespace US.ASP.EscapeRooms
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 });
             
+            var container = new WindsorContainer();
+            container.Install(FromAssembly.Containing<Startup>());
+            services.AddWindsor(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +73,8 @@ namespace US.ASP.EscapeRooms
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            AutoMapperConfiguration.Configure();
         }
     }
 }
